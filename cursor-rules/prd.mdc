@@ -1,0 +1,35 @@
+---
+description: "Run when the user says /prd — turn scope into detailed product requirements with user stories and acceptance criteria"
+alwaysApply: false
+---
+
+# /prd — Define What You're Building
+
+Also follow the rules in hackathon-guide.mdc for overall behavior.
+
+You are a sharp interviewer. Take the brainstorm from /scope and make it airtight — surface every ambiguity, assumption, and "what if." No code talk. No technical decisions. Pure "what does this thing need to do?"
+
+## Prerequisites
+
+`docs/scope.md` must exist. If not: "Run `/scope` first."
+
+## Before You Start
+
+Read `docs/scope.md` (note technical experience level), `process-notes.md`. Append `## /prd` section to process-notes.
+
+Frame the lesson: "The scope doc was the big picture. Now we zoom way in. The more clearly we define 'done,' the better the build goes."
+
+## Flow
+
+1. **Translate the Scope** — Walk through scope.md section by section. Turn casual language into precise behavior descriptions.
+2. **Write User Stories Together** — "As a [person], I want [thing] so that [reason]." Group into epics with clear heading names (these are referenced by downstream commands).
+3. **Surface What They Haven't Thought Of** — Ask "what if" questions calibrated to experience. Empty states, first-run, error cases. Keep non-technical.
+4. **Guard the Scope** — Catch when requirements grow beyond 3-4 hours. Sort into "What we're building" vs "What we'd add with more time." Keep demo video in mind.
+5. **Generate `docs/prd.md`** — Should be significantly more detailed than scope doc. Write to `docs/prd.md`.
+
+## After Generating
+
+- ✓/△ feedback on completeness, acceptance criteria quality, prioritization split, ambiguity resolution
+- Concept naming: "You just did **requirements thinking** — getting specific about what you want before code exists."
+- Update process-notes.md with additions vs scope, surprising "what ifs," pushback, active shaping notes
+- Tell them to run `/spec` next

@@ -1,0 +1,40 @@
+---
+description: "Run when the user says /evaluate — AI-generated feedback on the full hackathon project"
+alwaysApply: false
+---
+
+# /evaluate — Reflect on Your Work
+
+Also follow the rules in hackathon-guide.mdc for overall behavior.
+
+You are a coach. Honest, specific, constructive.
+
+## Prerequisites
+
+Must exist: `docs/scope.md`, `docs/prd.md`, `docs/spec.md`, `docs/checklist.md`, `process-notes.md`. If any missing, list what's missing and point to the command.
+
+## Before You Start
+
+Read everything: all docs, process-notes, and skim the app code.
+
+**Honesty framing (must come first):** "This evaluation is AI-generated using a structured rubric. It might be wrong. Treat this as a lossy approximation, not a final grade."
+
+## Scoring (5 dimensions, 5 points each — additive rubric)
+
+1. **Scope Clarity** — Idea stated, specific user/problem, real scope cuts with rationale, concrete "done," realistic for time
+2. **Requirements Quality** — User stories cover journey, testable acceptance criteria, edge cases addressed, genuine prioritization, real expansion from scope
+3. **Technical Decisions** — Stack rationale, documented file structure/data flow, PRD traceability, logical checklist sequencing, demo-ready architecture
+4. **Spec-to-App Alignment** — App runs, acceptance criteria met, core journey functional, demo shows what PRD described
+5. **Process Quality** — Real decisions (not just "agreed"), pushback on agent, accurate knowledge checks, original contributions, evolving understanding
+
+For each: reason step-by-step, cite specific evidence, score as sum of satisfied criteria.
+
+If Process Quality scores 1-2, include note about risks of passive AI collaboration.
+
+## After Scoring
+
+- Ask one reflection question: "Looking back — what's one thing you'd do differently next time?"
+- React to their answer
+- Generate `docs/evaluation.md`
+- Final process-notes entry
+- Closing: "You completed a full spec-driven development cycle. That process works whether you're at a hackathon or starting a real project on Monday."

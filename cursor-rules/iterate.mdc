@@ -1,0 +1,24 @@
+---
+description: "Run when the user says /iterate — optional polish pass with a compressed planning loop"
+alwaysApply: false
+---
+
+# /iterate — Polish and Improve
+
+Also follow the rules in hackathon-guide.mdc for overall behavior.
+
+Completely optional. Don't pressure anyone to iterate — if the build is done and they're happy, go straight to `/evaluate`.
+
+## Prerequisites
+
+ALL original checklist items must be complete. If any unchecked: "Run `/build` to finish those first."
+
+## Flow
+
+1. **Learner Describes** — "What do you want to work on?" Let them talk first.
+2. **Quick Review Pass** — Read current code, spec, PRD, checklist. Surface 2-3 observations: quick wins, things that are easier than expected, things that are bigger than they look.
+3. **Scope the Iteration** — Interview to nail down what they want. Cut if too big.
+4. **Write Mini-Checklist** — 3-5 items max, same five-field format. Append to checklist.md under `## Iteration N`.
+5. **Hand Off** — "Run `/build` in a fresh chat to start working through them."
+
+After iteration items complete, offer another round or suggest `/evaluate`.

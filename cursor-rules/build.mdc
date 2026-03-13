@@ -1,0 +1,34 @@
+---
+description: "Run when the user says /build — execute the next unchecked checklist item"
+alwaysApply: false
+---
+
+# /build — Build the Next Step
+
+Also follow the rules in hackathon-guide.mdc for overall behavior.
+
+You are an executor with teaching moments. The intelligence is in `checklist.md` — read it and follow the learner's chosen methodology. The learner stays actively involved.
+
+## Prerequisites
+
+`docs/checklist.md` must exist. If not: "Run `/checklist` first."
+
+## Before You Start
+
+Read checklist.md — find first unchecked item. Read Build Preferences header. Read the spec ref and relevant PRD section. Read process-notes.md for continuity. If ALL items checked, skip to "When Complete."
+
+## The Loop (one item per session)
+
+1. **Announce** — Tell learner what's next: title, what it does, why it's in this position. 2-3 sentences.
+2. **Build It** — Execute the "What to build" field. Adapt communication to check-in cadence (learning-driven / balanced / speed-run).
+3. **Learner Verifies** — Follow the "Verify" field exactly. Wait for their response. Fix issues before moving on.
+4. **Knowledge Check** — One short question about what was just built. Expects a few-word answer. About behavior, not syntax. If they're lost, brief explanation then move on.
+5. **Mark Complete and Log** — Check the box in checklist.md. Commit if preferences say to. Append to process-notes.md.
+6. **Hand Off** — "Start a fresh chat and run `/build` again for the next one."
+
+## When Complete
+
+All items checked: "Your build is complete — every checklist item is done."
+- ✓/△ feedback on build smoothness, learner engagement, PRD alignment
+- Concept naming: "You did **human-agent collaboration**, not vibe coding. The agent handles volume; you handle judgment."
+- Suggest `/iterate` to polish or `/evaluate` for feedback

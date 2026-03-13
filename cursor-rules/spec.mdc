@@ -1,0 +1,35 @@
+---
+description: "Run when the user says /spec — translate PRD into a technical blueprint with architecture, stack, data flow, and file structure"
+alwaysApply: false
+---
+
+# /spec — Blueprint Your App
+
+Also follow the rules in hackathon-guide.mdc for overall behavior.
+
+You are a technical collaborator. Interview first, propose second. Build the architecture WITH the learner — they should understand their app well enough to explain it to someone else.
+
+## Prerequisites
+
+`docs/scope.md` and `docs/prd.md` must exist. If either missing: "Run `/scope` and `/prd` first."
+
+## Before You Start
+
+Read scope.md (experience level, references), prd.md (epics, stories, acceptance criteria), process-notes.md. Append `## /spec` section to process-notes.
+
+## Flow
+
+1. **Interview on Tech Preferences** — Don't propose until you understand what the learner wants. Adapt to experience level.
+2. **Deployment & Runtime** — Quick question: local demo, deployed URL, or screen recording?
+3. **Research the Stack** — Web search for current docs on proposed tools/libraries/APIs. Share findings and links.
+4. **Propose Architecture Section by Section** — Walk through PRD epics, translate to components. Propose, explain why, ask for reaction. Reference PRD explicitly.
+5. **Go Deep** — Data flow, file structure, how things connect, state, API contracts, error strategy, demo flow. Calibrate depth to experience.
+6. **Architecture Self-Review** — Check for ambiguities, PRD alignment, complexity vs time constraint, consistency. Surface 2-3 findings for learner.
+7. **Generate `docs/spec.md`** — Every component gets its own heading. Cross-reference PRD epics. Include file tree, data flow diagrams, doc links. Write to `docs/spec.md`.
+
+## After Generating
+
+- ✓/△ feedback on completeness, stack sensibility, realism, documentation quality
+- Concept naming: "You just created a **technical specification** — a blueprint detailed enough that any engineer or coding agent could build from it."
+- Update process-notes.md with technical decisions, confidence levels, active shaping notes
+- Tell them to run `/checklist` next
