@@ -13,7 +13,7 @@ Works with **Claude Code**, **OpenAI Codex**, and **Cursor**.
 ### Claude Code
 
 ```
-/plugin marketplace add YOURUSERNAME/devpost-curriculum
+/plugin marketplace add challengepost/devpost-curriculum
 /plugin install hackathon-in-a-plugin@devpost-curriculum
 ```
 
@@ -26,7 +26,7 @@ Requires [Claude Code](https://claude.ai/code) v1.0.33+.
 Codex uses the same `SKILL.md` format natively. Clone and symlink the skills into your project:
 
 ```bash
-git clone https://github.com/YOURUSERNAME/devpost-curriculum.git ~/.devpost-curriculum
+git clone https://github.com/challengepost/devpost-curriculum.git ~/.devpost-curriculum
 
 # Copy skills into your project
 cp -r ~/.devpost-curriculum/plugins/hackathon-in-a-plugin/skills .agents/skills/hackathon
@@ -52,7 +52,7 @@ Then run `/scope` to start.
 Cursor uses `.cursor/rules/*.mdc` files. This repo includes a pre-built adapter:
 
 ```bash
-git clone https://github.com/YOURUSERNAME/devpost-curriculum.git ~/.devpost-curriculum
+git clone https://github.com/challengepost/devpost-curriculum.git ~/.devpost-curriculum
 
 # Copy the Cursor rules into your project
 mkdir -p .cursor/rules
