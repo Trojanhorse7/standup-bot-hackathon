@@ -61,6 +61,12 @@ cp ~/.devpost-curriculum/cursor-rules/*.mdc .cursor/rules/
 
 Then tell the agent: "Let's run /scope" to start the hackathon curriculum.
 
+## Tips
+
+- **Work through the commands in order.** Each one builds on the artifacts from the previous step.
+- **Don't delete the `docs/` folder** — it contains your scope, PRD, spec, and other artifacts that downstream commands depend on.
+- **If you're on Claude Code's $20/month Pro plan,** using Sonnet 4.5 instead of Opus will help avoid hitting usage limits during an intensive 3–4 hour session. If you do hit a limit, take a break and come back — your progress is saved in the `docs/` folder.
+
 ---
 
 ## What's Inside
