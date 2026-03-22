@@ -1,5 +1,4 @@
 import "dotenv/config";
-import http from "http";
 import { App } from "@slack/bolt";
 import type { StandupSession } from "./types";
 import { sendStandupDMs } from "./standup";
@@ -11,8 +10,9 @@ const STANDUP_TIMEOUT_MS = 30_000; // 30 seconds for demo — increase for produ
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
   signingSecret: process.env.SLACK_SIGNING_SECRET,
-  socketMode: true,
-  appToken: process.env.SLACK_APP_TOKEN,
+  ...(process.env.SLACK_APP_TOKEN
+    ? { socketMode: true, appToken: process.env.SLACK_APP_TOKEN }
+    : {}),
 });
 
 let session: StandupSession | null = null;
@@ -135,17 +135,9 @@ app.message(async ({ message, say, client }) => {
 });
 
 (async () => {
-  await app.start();
-  console.log("⚡ StandupBot is running (Socket Mode)");
-
-  // Health check server for Leapcell
   const port = Number(process.env.PORT) || 3000;
-  http.createServer((_req, res) => {
-    res.writeHead(200);
-    res.end("OK");
-  }).listen(port, () => {
-    console.log(`Health check server on port ${port}`);
-  });
+  await app.start(port);
+  console.log(`⚡ StandupBot is running on port ${port}`);
 })();
 
 export { session, app, STANDUP_CHANNEL_ID };
