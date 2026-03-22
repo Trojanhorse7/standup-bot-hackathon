@@ -107,6 +107,13 @@
 - Knowledge check: "What happens if someone types /standup in a random channel?" → "a redirect message to standup channel" — correct.
 - Learner actively worked through Slack app configuration (creating app, scopes, Socket Mode, event subscriptions) independently.
 
+### Step 4: DM sending to all channel members
+- Created `src/standup.ts` with `sendStandupDMs` function. Iterates over session members, sends DM with 3 standup questions via `chat.postMessage`. Marks unreachable users in the session map.
+- Wired into slash command handler — DMs fire after session creation.
+- Verification: Learner received the DM with correct format (greeting, 3 numbered questions, "reply in one message" instruction).
+- Knowledge check: "If the bot can't DM someone, what happens to that user in the session?" → "Not available" — close, the exact term is "unreachable" but the concept was correct. Brief clarification given.
+- No issues. Clean build.
+
 ## /checklist
 
 ### Sequencing decisions and rationale

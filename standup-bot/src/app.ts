@@ -1,6 +1,7 @@
 import "dotenv/config";
 import { App } from "@slack/bolt";
 import type { StandupSession } from "./types";
+import { sendStandupDMs } from "./standup";
 
 const STANDUP_CHANNEL_ID = process.env.STANDUP_CHANNEL_ID!;
 
@@ -61,6 +62,9 @@ app.command("/standup", async ({ command, ack, respond, client }) => {
     startedAt: new Date(),
     timeoutId: setTimeout(() => {}, 0), // placeholder — real timeout comes in step 7
   };
+
+  // Send DMs to all members
+  await sendStandupDMs(client, session);
 
   await respond(`Standup started! DMs sent to ${humanMembers.length} team members.`);
   console.log(`Standup triggered by ${command.user_id} — ${humanMembers.length} members`);

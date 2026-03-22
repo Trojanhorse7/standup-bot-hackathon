@@ -26,7 +26,7 @@
   Acceptance: Typing `/standup` in `#standup` shows the confirmation message with correct member count. Typing `/standup` in any other channel shows the redirect message. Typing `/standup` twice shows the "already in progress" message.
   Verify: In test Slack workspace, run `/standup` in `#standup` — see confirmation. Run it in another channel — see redirect. Run it again in `#standup` — see duplicate warning.
 
-- [ ] **4. DM sending to all channel members**
+- [x] **4. DM sending to all channel members**
   Spec ref: `spec.md > Bot Server > Session Manager` (Starting a session)
   What to build: Implement `src/standup.ts` with a `startSession` function. When called, iterate over the member list and send each user a DM via `chat.postMessage` with the 3 standup questions. Initialize the session's `members` Map with each user set to `null`. If a DM fails, mark that user as `"unreachable"` in the map. Wire this into the slash command handler in `app.ts`.
   Acceptance: After `/standup`, every member in the `#standup` channel receives a DM from the bot with the 3 questions. The DM message matches the spec format (greeting, numbered questions, "reply in one message" instruction).
