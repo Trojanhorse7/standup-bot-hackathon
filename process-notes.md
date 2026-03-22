@@ -114,6 +114,13 @@
 - Knowledge check: "If the bot can't DM someone, what happens to that user in the session?" → "Not available" — close, the exact term is "unreachable" but the concept was correct. Brief clarification given.
 - No issues. Clean build.
 
+### Step 5: Reply collection and acknowledgment
+- Added `message` event listener in `app.ts` for DM replies. Stores reply text in session map, sends "Got it, thanks! ✌️" acknowledgment. Ignores duplicate replies and replies from non-session users.
+- Hit "Sending messages to this app has been turned off" error — resolved by enabling "Allow users to send Slash commands and messages from the messages tab" in App Home settings. Required web search to diagnose.
+- Verification: Learner confirmed acknowledgment appeared after replying to bot DM. Second reply was ignored. Console showed logged reply text.
+- Knowledge check: "If you reply to the bot after the standup session has ended, what happens?" → "nothing" — correct.
+- Learner flagged the persistent "Sending messages" error across multiple attempts, driving the investigation to the App Home setting.
+
 ## /checklist
 
 ### Sequencing decisions and rationale

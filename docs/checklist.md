@@ -32,7 +32,7 @@
   Acceptance: After `/standup`, every member in the `#standup` channel receives a DM from the bot with the 3 questions. The DM message matches the spec format (greeting, numbered questions, "reply in one message" instruction).
   Verify: Run `/standup` in test workspace. Check that each test account received the DM. Verify the message format looks correct.
 
-- [ ] **5. Reply collection and acknowledgment**
+- [x] **5. Reply collection and acknowledgment**
   Spec ref: `spec.md > Bot Server > Session Manager` (Handling replies)
   What to build: Add a `message` event listener in `app.ts` for DM messages. When a reply comes from a user in the active session, store their reply text in the session map and send acknowledgment: "Got it, thanks! ✌️". If the user is not in an active session or has already replied, ignore silently. For now, skip the AI summarization — just log the reply to console.
   Acceptance: After receiving the DM questions, replying with free text triggers the "Got it, thanks! ✌️" acknowledgment. Replying a second time is ignored. The reply text is stored in the session map.

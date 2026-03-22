@@ -70,6 +70,35 @@ app.command("/standup", async ({ command, ack, respond, client }) => {
   console.log(`Standup triggered by ${command.user_id} — ${humanMembers.length} members`);
 });
 
+// Listen for DM replies
+app.message(async ({ message, say }) => {
+  // Only handle direct messages with text
+  if (message.channel_type !== "im" || message.subtype || !("text" in message)) {
+    return;
+  }
+
+  // Ignore if no active session
+  if (!session?.active) return;
+
+  const userId = message.user;
+  if (!userId) return;
+
+  // Ignore if user isn't part of the standup
+  if (!session.members.has(userId)) return;
+
+  // Ignore if user already replied
+  const currentValue = session.members.get(userId);
+  if (currentValue !== null) return;
+
+  // Store the reply
+  const replyText = message.text ?? "";
+  session.members.set(userId, replyText);
+  console.log(`Reply from ${userId}: ${replyText}`);
+
+  // Acknowledge
+  await say("Got it, thanks! ✌️");
+});
+
 (async () => {
   const port = Number(process.env.PORT) || 3000;
   await app.start(port);
