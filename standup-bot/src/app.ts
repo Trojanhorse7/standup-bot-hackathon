@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { App } from "@slack/bolt";
+import { App, ExpressReceiver } from "@slack/bolt";
 import type { StandupSession } from "./types";
 import { sendStandupDMs } from "./standup";
 import { summarizeReply } from "./ai";
@@ -7,12 +7,34 @@ import { summarizeReply } from "./ai";
 const STANDUP_CHANNEL_ID = process.env.STANDUP_CHANNEL_ID!;
 const STANDUP_TIMEOUT_MS = 30_000; // 30 seconds for demo — increase for production
 
+const useSocketMode = Boolean(process.env.SLACK_APP_TOKEN);
+
+// Use ExpressReceiver in HTTP mode for cloud deployment
+const receiver = useSocketMode
+  ? undefined
+  : new ExpressReceiver({
+      signingSecret: process.env.SLACK_SIGNING_SECRET!,
+    });
+
+// Add health check route for Leapcell
+if (receiver) {
+  receiver.router.get("/", (_req, res) => {
+    res.send("StandupBot is running");
+  });
+  receiver.router.get("/kaithheathcheck", (_req, res) => {
+    res.send("OK");
+  });
+}
+
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
-  signingSecret: process.env.SLACK_SIGNING_SECRET,
-  ...(process.env.SLACK_APP_TOKEN
-    ? { socketMode: true, appToken: process.env.SLACK_APP_TOKEN }
-    : {}),
+  ...(useSocketMode
+    ? {
+        socketMode: true,
+        appToken: process.env.SLACK_APP_TOKEN,
+        signingSecret: process.env.SLACK_SIGNING_SECRET,
+      }
+    : { receiver: receiver! }),
 });
 
 let session: StandupSession | null = null;
@@ -43,9 +65,6 @@ app.command("/standup", async ({ command, ack, respond, client }) => {
 
   for (const id of memberIds) {
     const userInfo = await client.users.info({ user: id });
-    if (!userInfo.user?.is_bot && userInfo.user?.id !== command.user_id) {
-      // We'll add the triggerer back — just filtering bots
-    }
     if (!userInfo.user?.is_bot) {
       humanMembers.push(id);
     }
