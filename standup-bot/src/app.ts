@@ -1,4 +1,5 @@
 import "dotenv/config";
+import http from "http";
 import { App } from "@slack/bolt";
 import type { StandupSession } from "./types";
 import { sendStandupDMs } from "./standup";
@@ -134,9 +135,17 @@ app.message(async ({ message, say, client }) => {
 });
 
 (async () => {
+  await app.start();
+  console.log("⚡ StandupBot is running (Socket Mode)");
+
+  // Health check server for Leapcell
   const port = Number(process.env.PORT) || 3000;
-  await app.start(port);
-  console.log(`⚡ StandupBot is running on port ${port}`);
+  http.createServer((_req, res) => {
+    res.writeHead(200);
+    res.end("OK");
+  }).listen(port, () => {
+    console.log(`Health check server on port ${port}`);
+  });
 })();
 
 export { session, app, STANDUP_CHANNEL_ID };
