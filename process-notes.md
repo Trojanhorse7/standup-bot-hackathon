@@ -92,6 +92,13 @@
 - Knowledge check: "What does the How It Works section communicate?" → "trigger, respond, summary" — correct.
 - No bugs or design concerns raised. Clean build.
 
+### Step 2: Bot project setup and TypeScript types
+- Scaffolded `standup-bot/` with npm init, installed @slack/bolt, @google/genai, dotenv, typescript, ts-node, @types/node.
+- Created tsconfig.json, src/types.ts (StandupSession interface), src/app.ts (Bolt init), .env (placeholders), .gitignore.
+- Verification: Learner ran `npx ts-node src/app.ts`, saw "StandupBot is running on port 3000" followed by expected `invalid_auth` error from placeholder tokens.
+- Knowledge check: "What does a null value in the members Map mean?" → "no reply yet" — correct.
+- No issues. Clean scaffold.
+
 ## /checklist
 
 ### Sequencing decisions and rationale

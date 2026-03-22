@@ -14,7 +14,7 @@
   Acceptance: Single page loads with all five sections visible. Dark theme applied. "Add to Slack" button is present (links to #). FAQ accordion expands/collapses. Looks decent on mobile. Matches dev-tool aesthetic — no corporate SaaS vibes.
   Verify: Run `npm run dev`, open in browser. Scroll through all sections. Resize to mobile width and confirm layout stacks correctly.
 
-- [ ] **2. Bot project setup and TypeScript types**
+- [x] **2. Bot project setup and TypeScript types**
   Spec ref: `spec.md > Bot Server > Types`, `spec.md > File Structure > Bot Server`
   What to build: Scaffold the `standup-bot/` project. Initialize with `npm init`, install dependencies (`@slack/bolt`, `@google/genai`, `typescript`, `ts-node`). Create `tsconfig.json`. Create `src/types.ts` with the `StandupSession` interface. Create `src/app.ts` with basic Bolt app initialization (reads tokens from `.env`). Create `.env` with placeholder values for `SLACK_BOT_TOKEN`, `SLACK_SIGNING_SECRET`, `GEMINI_API_KEY`, `STANDUP_CHANNEL_ID`. Confirm the app starts without errors.
   Acceptance: `standup-bot/` folder exists with all files from the spec's file structure. TypeScript compiles without errors. Bolt app initializes and logs "Bot is running" to console.
