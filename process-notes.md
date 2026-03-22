@@ -148,6 +148,18 @@
 - Knowledge check: "Why did we need to switch from Socket Mode to HTTP mode?" → "Due to leapcell" — correct. Leapcell can't maintain persistent WebSocket connections.
 - Learner persisted through multiple deployment iterations — showed patience and engagement with the debugging process.
 
+### Step 9: Prepare and record Devpost demo video
+- Provided a scripted 2:30 demo walkthrough: problem statement → trigger → respond → AI summary → timeout → landing page → close.
+- Learner recorded the video and confirmed it was clear and watchable.
+- Knowledge check: "What's the first thing a judge hears in your video?" → "The problem" — correct.
+- No issues.
+
+### Build Complete
+- Total items completed: 9/9
+- Overall: Build went well with real-world deployment challenges (Node version, Slack permissions, Socket Mode vs HTTP, Leapcell health checks) that tested the learner's debugging patience. Each was resolved without abandoning the plan.
+- Most engaged: Steps 3-6 (Slack integration) — the learner was actively testing in Slack, reporting results, and flagging errors. Proactively requested nodemon during step 6.
+- Least engaged: Step 9 (demo video) — quick confirmation, less dialogue. Understandable since it's a recording task, not a coding task.
+
 ## /checklist
 
 ### Sequencing decisions and rationale

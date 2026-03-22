@@ -56,7 +56,7 @@
   Acceptance: Bot is running on Leapcell and responding to `/standup` in the test Slack workspace. Landing page is live on a `*.vercel.app` URL with all sections visible.
   Verify: Run `/standup` in Slack — full flow works (DMs, replies, AI summary, timeout) against the deployed bot. Open the Vercel URL in a browser — landing page loads correctly.
 
-- [ ] **9. Prepare and record Devpost demo video**
+- [x] **9. Prepare and record Devpost demo video**
   Spec ref: `spec.md > Demo Flow`, `prd.md > What We're Building`
   What to build: Script a 2-3 minute demo walkthrough. Structure: open with the problem (async standups, 10-15 sec), show `/standup` in action (trigger → DMs → reply → AI summary appearing in channel → timeout for non-responders), quick switch to landing page on Vercel. Record with clear audio and visible UI. Show the deployed versions — live Slack bot and live landing page.
   Acceptance: Video clearly shows the full standup flow working end to end. Problem statement is stated upfront. AI summary quality is visible. Landing page is shown. Audio is clear and narration is coherent. Under 5 minutes.
