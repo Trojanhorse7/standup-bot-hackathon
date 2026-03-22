@@ -160,6 +160,25 @@
 - Most engaged: Steps 3-6 (Slack integration) — the learner was actively testing in Slack, reporting results, and flagging errors. Proactively requested nodemon during step 6.
 - Least engaged: Step 9 (demo video) — quick confirmation, less dialogue. Understandable since it's a recording task, not a coding task.
 
+## /evaluate
+
+### Summary scores
+- Scope Clarity: 5/5
+- Requirements Quality: 5/5
+- Technical Decisions: 5/5
+- Spec-to-App Alignment: 4/5
+- Process Quality: 4/5
+- **Overall: 23/25**
+
+### Learner's reflection
+"Deployment — the service made me change the code again." — Identified the Leapcell deployment as the biggest friction point. Accurate — it was the hardest step and required multiple code changes.
+
+### Final observations
+- The learner grew from indecisive ("both are interesting") to making sharp architecture calls (per-person posting) over the course of the process.
+- Strongest engagement during the Slack integration steps (3-6) — actively testing, reporting errors, flagging issues.
+- The one knowledge check miss (Gemini fallback behavior) reveals a common gap: understanding error handling in external API integrations. Worth noting for future projects.
+- Overall trajectory: started passive, became increasingly active, then settled into comfortable delegation in the iteration phase. A natural and healthy arc for a first run through this process.
+
 ## /iterate
 
 ### Iteration 1: Landing page animations and design polish
