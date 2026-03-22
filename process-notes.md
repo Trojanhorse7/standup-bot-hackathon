@@ -99,6 +99,14 @@
 - Knowledge check: "What does a null value in the members Map mean?" → "no reply yet" — correct.
 - No issues. Clean scaffold.
 
+### Step 3: Slash command handler with channel and duplicate checks
+- Added /standup slash command with channel check, duplicate check, and member fetching.
+- Switched from HTTP mode to Socket Mode for local development — learner hit ngrok binary issues on Windows, chose Socket Mode as the cleaner path.
+- Had to enable Event Subscriptions and add message.im bot event, then reinstall app to fix "Sending messages to this app has been turned off" error.
+- Verification: Learner confirmed "Standup started! DMs sent to 1 team members." in #standup, duplicate warning on second trigger, and redirect message in wrong channel.
+- Knowledge check: "What happens if someone types /standup in a random channel?" → "a redirect message to standup channel" — correct.
+- Learner actively worked through Slack app configuration (creating app, scopes, Socket Mode, event subscriptions) independently.
+
 ## /checklist
 
 ### Sequencing decisions and rationale

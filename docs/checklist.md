@@ -20,7 +20,7 @@
   Acceptance: `standup-bot/` folder exists with all files from the spec's file structure. TypeScript compiles without errors. Bolt app initializes and logs "Bot is running" to console.
   Verify: Run `npx ts-node src/app.ts` (with placeholder env vars) and confirm it starts without crashing. Check that `src/types.ts` has the `StandupSession` interface.
 
-- [ ] **3. Slash command handler with channel and duplicate checks**
+- [x] **3. Slash command handler with channel and duplicate checks**
   Spec ref: `spec.md > Bot Server > Slash Command Handler`
   What to build: Register the `/standup` slash command in `src/app.ts`. Implement channel check — if `command.channel_id` doesn't match `STANDUP_CHANNEL_ID`, respond with ephemeral message: "Head over to #standup to use this command." Implement duplicate check — if a session is already active, respond: "A standup is already in progress." On success, call `conversations.members` to get channel members, filter out bots, and respond with: "Standup started! DMs sent to X team members." Create the Slack app at api.slack.com/apps with required scopes (`commands`, `chat:write`, `im:write`, `im:read`, `im:history`, `channels:read`, `users:read`) and the `/standup` slash command.
   Acceptance: Typing `/standup` in `#standup` shows the confirmation message with correct member count. Typing `/standup` in any other channel shows the redirect message. Typing `/standup` twice shows the "already in progress" message.
