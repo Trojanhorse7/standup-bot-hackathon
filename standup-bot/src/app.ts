@@ -2,6 +2,7 @@ import "dotenv/config";
 import { App } from "@slack/bolt";
 import type { StandupSession } from "./types";
 import { sendStandupDMs } from "./standup";
+import { summarizeReply } from "./ai";
 
 const STANDUP_CHANNEL_ID = process.env.STANDUP_CHANNEL_ID!;
 
@@ -71,7 +72,7 @@ app.command("/standup", async ({ command, ack, respond, client }) => {
 });
 
 // Listen for DM replies
-app.message(async ({ message, say }) => {
+app.message(async ({ message, say, client }) => {
   // Only handle direct messages with text
   if (message.channel_type !== "im" || message.subtype || !("text" in message)) {
     return;
@@ -97,6 +98,16 @@ app.message(async ({ message, say }) => {
 
   // Acknowledge
   await say("Got it, thanks! ✌️");
+
+  // Summarize and post to #standup
+  const summary = await summarizeReply(replyText);
+  const userInfo = await client.users.info({ user: userId });
+  const displayName = userInfo.user?.real_name ?? userInfo.user?.name ?? userId;
+
+  await client.chat.postMessage({
+    channel: STANDUP_CHANNEL_ID,
+    text: `*${displayName}:* ${summary}`,
+  });
 });
 
 (async () => {

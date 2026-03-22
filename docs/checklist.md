@@ -38,7 +38,7 @@
   Acceptance: After receiving the DM questions, replying with free text triggers the "Got it, thanks! ✌️" acknowledgment. Replying a second time is ignored. The reply text is stored in the session map.
   Verify: Run `/standup`, reply to the bot DM from a test account. Confirm acknowledgment appears. Check console log shows the reply text. Reply again — confirm no second acknowledgment.
 
-- [ ] **6. AI summarization and channel posting**
+- [x] **6. AI summarization and channel posting**
   Spec ref: `spec.md > Bot Server > AI Summarizer`, `spec.md > Bot Server > Session Manager` (Handling replies — post to channel)
   What to build: Implement `src/ai.ts` with the `summarizeReply` function using Gemini 2.5 Flash. The prompt asks for a single concise, casual, dev-friendly sentence covering yesterday/today/blockers. Wire it into the reply handler — after storing the reply and acknowledging, call `summarizeReply`, then post the one-liner to `#standup` as `@username: [AI summary]`. Add error handling: if Gemini fails, fall back to posting the raw reply text. Get a Gemini API key from Google AI Studio.
   Acceptance: When a team member replies to the bot DM, their AI-summarized one-liner appears in `#standup` within a few seconds. The summary is concise, casual, and captures yesterday/today/blockers. If AI fails, the raw reply is posted instead.

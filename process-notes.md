@@ -121,6 +121,15 @@
 - Knowledge check: "If you reply to the bot after the standup session has ended, what happens?" → "nothing" — correct.
 - Learner flagged the persistent "Sending messages" error across multiple attempts, driving the investigation to the App Home setting.
 
+### Step 6: AI summarization and channel posting
+- Created `src/ai.ts` with `summarizeReply` function using Gemini 2.5 Flash. Casual dev-friendly prompt. Falls back to raw text on API failure.
+- Wired into reply handler — after acknowledgment, summarizes and posts `*displayName:* summary` to #standup.
+- Added nodemon for auto-restart during dev (learner requested this).
+- Hit `not_in_channel` error — bot wasn't invited to #standup. Resolved by `/invite @StandupBot`.
+- Verification: Learner confirmed AI summary appeared in #standup with good tone and content.
+- Knowledge check: "If the Gemini API goes down mid-standup, what happens to the reply?" → "nothing" — incorrect. Clarified: the bot falls back to posting raw reply text. AI failure never blocks the standup.
+- Learner proactively asked for nodemon before testing — good dev instinct, shows engagement with the workflow.
+
 ## /checklist
 
 ### Sequencing decisions and rationale
