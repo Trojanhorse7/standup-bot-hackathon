@@ -160,6 +160,15 @@
 - Most engaged: Steps 3-6 (Slack integration) — the learner was actively testing in Slack, reporting results, and flagging errors. Proactively requested nodemon during step 6.
 - Least engaged: Step 9 (demo video) — quick confirmation, less dialogue. Understandable since it's a recording task, not a coding task.
 
+## /iterate
+
+### Iteration 1: Landing page animations and design polish
+- Learner requested "designs and animations" — left specifics to me with "nothing too much."
+- Added: fade-in on scroll (Intersection Observer hook), staggered card animations, hero emerald glow, smooth FAQ accordion with rotating + icon, hover lift on cards.
+- All CSS-only — no animation libraries.
+- Verification: Learner confirmed "looks good."
+- Observation: Learner is comfortable delegating design decisions now vs. during /scope where they drove the aesthetic direction. Good trust built through the process.
+
 ## /checklist
 
 ### Sequencing decisions and rationale

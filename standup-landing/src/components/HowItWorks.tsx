@@ -1,3 +1,5 @@
+import { useFadeIn } from "../hooks/useFadeIn";
+
 const steps = [
   {
     number: "01",
@@ -20,6 +22,8 @@ const steps = [
 ];
 
 export default function HowItWorks() {
+  const { ref, isVisible } = useFadeIn();
+
   return (
     <section className="py-24 px-6">
       <div className="max-w-5xl mx-auto">
@@ -29,11 +33,14 @@ export default function HowItWorks() {
         <p className="text-2xl md:text-3xl font-bold text-white text-center mb-16">
           Three steps. Zero meetings.
         </p>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div
+          ref={ref}
+          className={`grid md:grid-cols-3 gap-8 fade-in ${isVisible ? "visible" : ""}`}
+        >
           {steps.map((step) => (
             <div
               key={step.number}
-              className="border border-gray-800 rounded-xl p-8 bg-[#111111] hover:border-emerald-400/30 transition-colors"
+              className="stagger-child card-hover border border-gray-800 rounded-xl p-8 bg-[#111111] hover:border-emerald-400/30"
             >
               <div className="text-3xl mb-4">{step.icon}</div>
               <div className="text-emerald-400 text-xs font-semibold tracking-widest mb-2">

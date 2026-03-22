@@ -1,14 +1,23 @@
+import { useFadeIn } from "../hooks/useFadeIn";
+
 export default function Hero() {
+  const { ref, isVisible } = useFadeIn(0.1);
+
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center px-6 text-center">
+    <section
+      ref={ref}
+      className={`min-h-screen flex flex-col items-center justify-center px-6 text-center fade-in ${isVisible ? "visible" : ""}`}
+    >
       <div className="mb-6 text-sm tracking-widest uppercase text-emerald-400">
         async standups for dev teams
       </div>
-      <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight max-w-3xl">
-        Standups that don't
-        <br />
-        <span className="text-emerald-400">waste your morning.</span>
-      </h1>
+      <div className="hero-glow">
+        <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight max-w-3xl">
+          Standups that don't
+          <br />
+          <span className="text-emerald-400">waste your morning.</span>
+        </h1>
+      </div>
       <p className="mt-6 text-lg text-gray-400 max-w-xl leading-relaxed">
         A Slack bot that collects your team's updates via DM and posts
         AI-generated summaries to your channel. No meetings. No forms. Just one
@@ -16,7 +25,7 @@ export default function Hero() {
       </p>
       <a
         href="#"
-        className="mt-10 inline-flex items-center gap-3 bg-white text-black font-semibold px-8 py-4 rounded-lg hover:bg-gray-200 transition-colors text-sm"
+        className="mt-10 inline-flex items-center gap-3 bg-white text-black font-semibold px-8 py-4 rounded-lg hover:bg-gray-200 hover:scale-105 transition-all text-sm"
       >
         <svg
           width="20"

@@ -1,3 +1,5 @@
+import { useFadeIn } from "../hooks/useFadeIn";
+
 const testimonials = [
   {
     quote: "Our 20-minute standups are now 30-second Slack messages. I'm never going back.",
@@ -17,6 +19,8 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
+  const { ref, isVisible } = useFadeIn();
+
   return (
     <section className="py-24 px-6 bg-[#0d0d0d]">
       <div className="max-w-5xl mx-auto">
@@ -26,11 +30,14 @@ export default function Testimonials() {
         <p className="text-2xl md:text-3xl font-bold text-white text-center mb-16">
           Built by devs, for devs.
         </p>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div
+          ref={ref}
+          className={`grid md:grid-cols-3 gap-8 fade-in ${isVisible ? "visible" : ""}`}
+        >
           {testimonials.map((t) => (
             <div
               key={t.name}
-              className="border border-gray-800 rounded-xl p-8 bg-[#111111]"
+              className="stagger-child card-hover border border-gray-800 rounded-xl p-8 bg-[#111111]"
             >
               <p className="text-gray-300 text-sm leading-relaxed mb-6 italic">
                 "{t.quote}"

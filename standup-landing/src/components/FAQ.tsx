@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useFadeIn } from "../hooks/useFadeIn";
 
 const faqs = [
   {
@@ -9,7 +10,7 @@ const faqs = [
   {
     question: "What if someone doesn't respond?",
     answer:
-      "After a configurable timeout, the bot posts \"No response\" next to that person's name in the channel summary. Non-responses never block the rest of the standup from completing.",
+      'After a configurable timeout, the bot posts "No response" next to that person\'s name in the channel summary. Non-responses never block the rest of the standup from completing.',
   },
   {
     question: "Can I customize the standup questions?",
@@ -30,6 +31,7 @@ const faqs = [
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const { ref, isVisible } = useFadeIn();
 
   return (
     <section className="py-24 px-6">
@@ -40,7 +42,10 @@ export default function FAQ() {
         <p className="text-2xl md:text-3xl font-bold text-white text-center mb-16">
           Got questions?
         </p>
-        <div className="space-y-3">
+        <div
+          ref={ref}
+          className={`space-y-3 fade-in ${isVisible ? "visible" : ""}`}
+        >
           {faqs.map((faq, i) => (
             <div
               key={i}
@@ -53,17 +58,17 @@ export default function FAQ() {
                 <span className="text-sm text-white font-medium">
                   {faq.question}
                 </span>
-                <span className="text-emerald-400 text-lg shrink-0">
-                  {openIndex === i ? "−" : "+"}
+                <span
+                  className={`text-emerald-400 text-lg shrink-0 transition-transform duration-300 ${openIndex === i ? "rotate-45" : ""}`}
+                >
+                  +
                 </span>
               </button>
-              {openIndex === i && (
-                <div className="px-6 pb-5">
-                  <p className="text-sm text-gray-400 leading-relaxed">
-                    {faq.answer}
-                  </p>
-                </div>
-              )}
+              <div className={`faq-answer ${openIndex === i ? "open" : ""}`}>
+                <p className="text-sm text-gray-400 leading-relaxed">
+                  {faq.answer}
+                </p>
+              </div>
             </div>
           ))}
         </div>

@@ -61,3 +61,11 @@
   What to build: Script a 2-3 minute demo walkthrough. Structure: open with the problem (async standups, 10-15 sec), show `/standup` in action (trigger → DMs → reply → AI summary appearing in channel → timeout for non-responders), quick switch to landing page on Vercel. Record with clear audio and visible UI. Show the deployed versions — live Slack bot and live landing page.
   Acceptance: Video clearly shows the full standup flow working end to end. Problem statement is stated upfront. AI summary quality is visible. Landing page is shown. Audio is clear and narration is coherent. Under 5 minutes.
   Verify: Watch the recording end to end. Would a judge who knows nothing about StandupBot understand what it does and why it matters within the first 30 seconds?
+
+## Iteration 1
+
+- [x] **10. Landing page animations and design polish**
+  Spec ref: New — not in original spec
+  What to build: Add fade-in-on-scroll animations to all sections using Intersection Observer hook. Add a subtle emerald glow behind the hero heading. Smooth height transition on FAQ accordion. Add hover lift effect on How It Works and Testimonial cards. Keep everything CSS-only — no animation libraries.
+  Acceptance: Sections fade in as you scroll down. Hero has a soft glow. FAQ opens/closes smoothly. Cards lift slightly on hover. Animations feel subtle, not distracting.
+  Verify: Run dev server, scroll through the page slowly. Confirm animations trigger on scroll. Open/close FAQ items — transition should be smooth. Hover over cards — should lift with a shadow.
