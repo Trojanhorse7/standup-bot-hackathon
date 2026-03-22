@@ -5,6 +5,7 @@ import { sendStandupDMs } from "./standup";
 import { summarizeReply } from "./ai";
 
 const STANDUP_CHANNEL_ID = process.env.STANDUP_CHANNEL_ID!;
+const STANDUP_TIMEOUT_MS = 30_000; // 30 seconds for demo — increase for production
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -55,13 +56,35 @@ app.command("/standup", async ({ command, ack, respond, client }) => {
     members.set(id, null);
   }
 
+  const timeoutId = setTimeout(async () => {
+    if (!session?.active) return;
+
+    console.log("Standup timeout — posting non-responses");
+
+    for (const [userId, value] of session.members) {
+      if (value === null || value === "unreachable") {
+        const userInfo = await client.users.info({ user: userId });
+        const displayName = userInfo.user?.real_name ?? userInfo.user?.name ?? userId;
+        const status = value === "unreachable" ? "Unreachable" : "No response";
+
+        await client.chat.postMessage({
+          channel: STANDUP_CHANNEL_ID,
+          text: `*${displayName}:* ${status}`,
+        });
+      }
+    }
+
+    session.active = false;
+    console.log("Standup session ended");
+  }, STANDUP_TIMEOUT_MS);
+
   session = {
     active: true,
     channelId: STANDUP_CHANNEL_ID,
     members,
     triggeredBy: command.user_id,
     startedAt: new Date(),
-    timeoutId: setTimeout(() => {}, 0), // placeholder — real timeout comes in step 7
+    timeoutId,
   };
 
   // Send DMs to all members

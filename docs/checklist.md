@@ -44,7 +44,7 @@
   Acceptance: When a team member replies to the bot DM, their AI-summarized one-liner appears in `#standup` within a few seconds. The summary is concise, casual, and captures yesterday/today/blockers. If AI fails, the raw reply is posted instead.
   Verify: Run `/standup`, reply from a test account with a multi-sentence standup update. Check `#standup` — a clean one-liner summary should appear with the user's name. Test the fallback by temporarily using an invalid API key — raw text should be posted instead.
 
-- [ ] **7. Timeout handling and session cleanup**
+- [x] **7. Timeout handling and session cleanup**
   Spec ref: `spec.md > Bot Server > Session Manager` (Timeout)
   What to build: Start a `setTimeout` (30 seconds) when the session begins. When timeout fires: for each user with `null` in the map, post `@username: No response` to `#standup`. For each user marked `"unreachable"`, post `@username: Unreachable` to `#standup`. Set session `active = false` so a new `/standup` can be triggered. Make the timeout duration a constant that's easy to change. Ensure late replies after timeout are ignored.
   Acceptance: After 30 seconds, non-responders show as "No response" in `#standup`. Unreachable users show as "Unreachable". A new `/standup` can be triggered after timeout completes. Replies after timeout are ignored.

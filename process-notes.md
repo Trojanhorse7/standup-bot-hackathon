@@ -130,6 +130,12 @@
 - Knowledge check: "If the Gemini API goes down mid-standup, what happens to the reply?" → "nothing" — incorrect. Clarified: the bot falls back to posting raw reply text. AI failure never blocks the standup.
 - Learner proactively asked for nodemon before testing — good dev instinct, shows engagement with the workflow.
 
+### Step 7: Timeout handling and session cleanup
+- Added 30-second timeout with `STANDUP_TIMEOUT_MS` constant. On timeout, posts "No response" or "Unreachable" for each non-responder, then sets session inactive.
+- Verification: Learner confirmed "No response" appeared after 30 seconds, and `/standup` could be triggered again after timeout.
+- Knowledge check: "After the timeout fires, what happens if someone sends a late reply?" → "Nothing" — correct.
+- No issues. Clean build — all bot logic is now complete.
+
 ## /checklist
 
 ### Sequencing decisions and rationale
