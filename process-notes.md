@@ -136,6 +136,18 @@
 - Knowledge check: "After the timeout fires, what happens if someone sends a late reply?" → "Nothing" — correct.
 - No issues. Clean build — all bot logic is now complete.
 
+### Step 8: Deploy bot to Leapcell and landing page to Vercel
+- Landing page deployed to Vercel at `https://standup-bot-hackathon.vercel.app/` — straightforward, no issues.
+- Bot deployment to Leapcell was the hardest step. Multiple issues:
+  1. Created new GitHub repo (`Trojanhorse7/standup-bot-hackathon`) since learner didn't have push access to the original remote.
+  2. Socket Mode failed on Leapcell — WebSocket connection couldn't be maintained. Switched to HTTP mode.
+  3. Health check failures — Bolt's default HTTP receiver didn't respond to Leapcell's `/kaithheathcheck` endpoint. Switched to `ExpressReceiver` with custom health check routes.
+  4. Auto-detection: code now uses Socket Mode locally (if `SLACK_APP_TOKEN` is set) and HTTP mode on Leapcell (without it).
+  5. Had to update Slack app's Event Subscriptions and Slash Command Request URLs to point to the Leapcell domain.
+- Verification: Learner confirmed `/standup` works end to end on the deployed bot — DMs, replies, AI summary, timeout all functional.
+- Knowledge check: "Why did we need to switch from Socket Mode to HTTP mode?" → "Due to leapcell" — correct. Leapcell can't maintain persistent WebSocket connections.
+- Learner persisted through multiple deployment iterations — showed patience and engagement with the debugging process.
+
 ## /checklist
 
 ### Sequencing decisions and rationale

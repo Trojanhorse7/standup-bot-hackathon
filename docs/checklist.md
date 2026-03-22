@@ -50,7 +50,7 @@
   Acceptance: After 30 seconds, non-responders show as "No response" in `#standup`. Unreachable users show as "Unreachable". A new `/standup` can be triggered after timeout completes. Replies after timeout are ignored.
   Verify: Run `/standup` but don't reply from one test account. Wait 30 seconds — confirm "No response" appears in `#standup`. Try `/standup` again — confirm it works (no "already in progress"). Reply after timeout — confirm it's ignored.
 
-- [ ] **8. Deploy bot to Leapcell and landing page to Vercel**
+- [x] **8. Deploy bot to Leapcell and landing page to Vercel**
   Spec ref: `spec.md > Runtime & Deployment`
   What to build: Push `standup-bot/` to a Git repo and deploy to Leapcell. Configure build command (`npm install && npm run build`), start command (`node dist/app.js`), and environment variables in Leapcell dashboard. Update the Slack app's Request URL to the Leapcell domain. Push `standup-landing/` to a Git repo and deploy to Vercel. Verify both are live.
   Acceptance: Bot is running on Leapcell and responding to `/standup` in the test Slack workspace. Landing page is live on a `*.vercel.app` URL with all sections visible.
